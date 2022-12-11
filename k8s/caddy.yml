@@ -1,0 +1,49 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: caddy
+  annotations:
+    metallb.universe.tf/address-pool: first-pool
+  labels:
+    app: caddy
+spec:
+  type: LoadBalancer
+  clusterIP: 10.99.99.90
+  selector:
+    app: caddy
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caddy
+  labels:
+    app: caddy
+spec:
+  selector:
+    matchLabels:
+      app: caddy
+  template:
+    metadata:
+      labels:
+        app: caddy
+    spec:
+      containers:
+      - name: caddy
+        # livenessProbe:
+        #   exec:
+        #     command:
+        #     - sh
+        #     - /dog.sh
+        #   initialDelaySeconds: 20
+        #   periodSeconds: 5
+        image: caddy
+        ports:
+          - containerPort: 3000
+            name: http
+        imagePullPolicy: Never
+        securityContext:
+          privileged: true
