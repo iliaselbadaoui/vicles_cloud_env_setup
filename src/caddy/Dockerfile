@@ -17,4 +17,4 @@ RUN apt install caddy
 ADD Caddyfile /
 ADD start.sh /
 ENTRYPOINT [ "sh", "start.sh" ]
-EXPOSE 3000
+EXPOSE 80 443

@@ -4,7 +4,7 @@ metadata:
   name: mysql
 spec:
   type: ClusterIP
-  clusterIP: 10.99.99.93
+  clusterIP: 10.100.99.93
   selector:
     app: mysql
   ports:
@@ -63,10 +63,7 @@ spec:
         #     - /dog.sh
         #   initialDelaySeconds: 20
         #   periodSeconds: 5
-        image: mysql
-        imagePullPolicy: Never
-        securityContext:
-          privileged: true
+        image: 717189823417.dkr.ecr.eu-central-1.amazonaws.com/mysql:latest
         ports:
         - name: mysql
           containerPort: 3306

@@ -1,0 +1,1 @@
+sh api.sh; sh app.sh; sh pma.sh; sh caddy.sh; sh mysql.sh;

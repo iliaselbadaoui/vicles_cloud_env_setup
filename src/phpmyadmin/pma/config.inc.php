@@ -11,7 +11,7 @@ $i = 0;
 /* Server: localhost [1] */
 $i++;
 $cfg['Servers'][$i]['verbose'] = '';
-$cfg['Servers'][$i]['host'] = '10.99.99.93';
+$cfg['Servers'][$i]['host'] = '10.100.99.93';
 $cfg['Servers'][$i]['connect_type'] = 'TCP';
 $cfg['Servers'][$i]['port'] = '3306';
 $cfg['Servers'][$i]['socket'] = '';

@@ -4,7 +4,7 @@ metadata:
   name: pma
 spec:
   type: ClusterIP
-  clusterIP: 10.99.99.80
+  clusterIP: 10.100.99.80
   selector:
     app: pma
   ports:
@@ -34,7 +34,6 @@ spec:
           #     - /dog.sh
           #   initialDelaySeconds: 20
           #   periodSeconds: 5
-          image: pma
-          imagePullPolicy: Never
+          image: 717189823417.dkr.ecr.eu-central-1.amazonaws.com/pma:latest
           ports:
             - containerPort: 3000

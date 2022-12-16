@@ -4,7 +4,7 @@ metadata:
   name: api
 spec:
   type: ClusterIP
-  clusterIP: 10.99.99.91
+  clusterIP: 10.100.99.91
   selector:
     app: api
   ports:
@@ -34,7 +34,6 @@ spec:
           #     - /dog.sh
           #   initialDelaySeconds: 20
           #   periodSeconds: 5
-          image: api
-          imagePullPolicy: Never
+          image: 717189823417.dkr.ecr.eu-central-1.amazonaws.com/back:latest
           ports:
             - containerPort: 3000
