@@ -14,6 +14,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api
+  
   labels:
     app: api
 spec:
@@ -25,6 +26,7 @@ spec:
       labels:
         app: api
     spec:
+      serviceAccountName: 
       containers:
         - name: api
           # livenessProbe:

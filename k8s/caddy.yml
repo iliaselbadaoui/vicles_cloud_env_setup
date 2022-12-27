@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: caddy
+  
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: external
     service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: instance
@@ -10,7 +11,6 @@ metadata:
     app: caddy
 spec:
   type: LoadBalancer
-  clusterIP: 10.100.99.90
   selector:
     app: caddy
   ports:
@@ -25,6 +25,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: caddy
+  
   labels:
     app: caddy
 spec:
@@ -36,6 +37,7 @@ spec:
       labels:
         app: caddy
     spec:
+      serviceAccountName: 
       containers:
       - name: caddy
         # livenessProbe:

@@ -1,4 +1,3 @@
-www.vicles.com
 {
 	# root * /www
 	route /api/login {

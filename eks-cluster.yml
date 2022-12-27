@@ -12,3 +12,4 @@ nodeGroups:
     volumeSize: 80
     ssh:
       allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key
+      # 3E09C8C55CB816796EBDB46A83115637
