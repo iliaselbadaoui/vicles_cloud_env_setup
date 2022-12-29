@@ -17,6 +17,8 @@ metadata:
   name: mysql-pv-claim
   
 spec:
+  storageClassName: ""
+  volumeName: mysql-pv-volume
   accessModes:
   - ReadWriteOnce
   resources:
@@ -31,6 +33,7 @@ metadata:
   labels:
     type: local
 spec:
+  storageClassName: ""
   capacity:
     storage: 15Gi
   accessModes:
