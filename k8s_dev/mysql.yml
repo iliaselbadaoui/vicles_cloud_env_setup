@@ -1,0 +1,84 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  
+spec:
+  type: ClusterIP
+  clusterIP: 10.100.99.93
+  selector:
+    app: mysql
+  ports:
+      - port: 3306
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+  
+spec:
+  storageClassName: ""
+  volumeName: mysql-pv-volume
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 15Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv-volume
+  
+  labels:
+    type: local
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 15Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  
+  labels:
+    app: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+      tier: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+        tier: mysql
+    spec:
+      restartPolicy: Always
+      serviceAccountName: 
+      containers:
+      - name: mysql
+        # livenessProbe:
+        #   exec:
+        #     command:
+        #     - sh
+        #     - /dog.sh
+        #   initialDelaySeconds: 20
+        #   periodSeconds: 5
+        image: mysql
+        imagePullPolicy: Never
+        ports:
+        - name: mysql
+          containerPort: 3306
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: "/var/lib/mysql"
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim

@@ -1,0 +1,58 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: caddy
+  
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+  labels:
+    app: caddy
+spec:
+  type: LoadBalancer
+  selector:
+    app: caddy
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+    - name: https
+      port: 443
+      targetPort: 443
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caddy
+  
+  labels:
+    app: caddy
+spec:
+  selector:
+    matchLabels:
+      app: caddy
+  template:
+    metadata:
+      labels:
+        app: caddy
+    spec:
+      serviceAccountName: 
+      containers:
+      - name: caddy
+        # livenessProbe:
+        #   exec:
+        #     command:
+        #     - sh
+        #     - /dog.sh
+        #   initialDelaySeconds: 20
+        #   periodSeconds: 5
+        image: caddy
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 80
+            name: http
+          - containerPort: 443
+            name: https
+        securityContext:
+          privileged: true

@@ -21,9 +21,9 @@ docker build -t mysql src/mysql/
 docker build -t caddy src/caddy/
 
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.7/config/manifests/metallb-native.yaml
-kubectl apply -f k8s/metalLB.yml
-kubectl apply -f k8s/app.yml
-kubectl apply -f k8s/api.yml
-kubectl apply -f k8s/pma.yml
-kubectl apply -f k8s/mysql.yml
-kubectl apply -f k8s/caddy.yml
+kubectl apply -f k8s_dev/metalLB.yml
+kubectl apply -f k8s_dev/app.yml
+kubectl apply -f k8s_dev/api.yml
+kubectl apply -f k8s_dev/pma.yml
+kubectl apply -f k8s_dev/mysql.yml
+kubectl apply -f k8s_dev/caddy.yml
