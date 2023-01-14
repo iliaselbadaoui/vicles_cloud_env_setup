@@ -11,14 +11,14 @@ else
     kubectl delete pvc --all
 fi
 
-sed -i '' "s/IPS/$(minikube ip)/g" k8s/metalLB.yml
+sed -i '' "s/IPS/$(minikube ip)/g" k8s_dev/metalLB.yml
 
 eval $(minikube docker-env)
-docker build -t app src/caryApp/
-docker build -t api src/caryBack/
-docker build -t pma src/phpmyadmin/
-docker build -t mysql src/mysql/
-docker build -t caddy src/caddy/
+docker build -t app dev_src/caryApp/
+docker build -t api dev_src/caryBack/
+docker build -t pma dev_src/phpmyadmin/
+docker build -t mysql dev_src/mysql/
+docker build -t caddy dev_src/caddy/
 
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.7/config/manifests/metallb-native.yaml
 kubectl apply -f k8s_dev/metalLB.yml

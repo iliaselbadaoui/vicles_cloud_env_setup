@@ -1,0 +1,45 @@
+vicles.com
+{
+	# root * /www
+	route /api/login {
+		uri strip_prefix /api/login
+		rewrite * /Controllers/loginController.php
+		reverse_proxy 10.100.99.91:3000
+		file_server
+	}
+	route /api/costumer {
+		uri strip_prefix /api/login
+		rewrite * /Controllers/costumerController.php
+		reverse_proxy 10.100.99.91:3000
+		file_server
+	}
+
+	route /api/agency {
+		uri strip_prefix /api/login
+		rewrite * /Controllers/garageController.php
+		reverse_proxy 10.100.99.91:3000
+		file_server
+	}
+
+	route /api/notifications {
+		uri strip_prefix /api/login
+		rewrite * /Controllers/notificationsController.php
+		reverse_proxy 10.100.99.91:3000
+		file_server
+	}
+
+	handle_path /pma/* {
+		reverse_proxy 10.100.99.80:3000 
+		file_server
+	}
+
+	route /index.php* {
+		uri strip_prefix /index.php
+		redir * /pma/
+	}
+	
+	route {
+		reverse_proxy 10.100.99.99:3000
+		file_server
+	}
+}
