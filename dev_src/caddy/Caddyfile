@@ -1,4 +1,4 @@
-vicles.com
+:3000
 {
 	# root * /www
 	route /api/login {

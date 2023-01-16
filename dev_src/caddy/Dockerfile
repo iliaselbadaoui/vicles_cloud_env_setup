@@ -18,4 +18,4 @@ ADD Caddyfile /
 ADD start.sh /
 ENTRYPOINT [ "sh", "start.sh" ]
 
-EXPOSE 80 443
+EXPOSE 3000
