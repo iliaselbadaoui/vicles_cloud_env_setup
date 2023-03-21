@@ -14,7 +14,8 @@ fi
 sed -i '' "s/IPS/$(minikube ip)/g" k8s_dev/metalLB.yml
 
 eval $(minikube docker-env)
-docker build -t app dev_src/caryApp/
+# docker build -t app dev_src/caryApp/
+docker build -t app dev_src/appNode/
 docker build -t api dev_src/caryBack/
 docker build -t pma dev_src/phpmyadmin/
 docker build -t mysql dev_src/mysql/
