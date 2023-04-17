@@ -8,6 +8,13 @@ end$$
 DELIMITER ;
 
 DELIMITER $$
+CREATE PROCEDURE getCarById(IN p_id INT)
+BEGIN
+	SELECT * FROM car c WHERE c.id = p_id;
+END
+DELIMITER ;
+
+DELIMITER $$
 CREATE PROCEDURE `cancelBooking`(IN p_rent INT(11))
 BEGIN
 	UPDATE rent r SET r.canceled = 1 WHERE r.id = p_rent;

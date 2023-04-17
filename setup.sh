@@ -9,6 +9,8 @@ else
     kubectl delete deployments --all
     kubectl delete svc --all
     kubectl delete pvc --all
+    kubectl delete pv --all
+    # minikube cache delete
 fi
 
 sed -i '' "s/IPS/$(minikube ip)/g" k8s_dev/metalLB.yml

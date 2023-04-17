@@ -16,5 +16,5 @@ ADD procedures.sql /
 RUN mv /etc/mysql/mariadb.conf.d/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf.old
 ADD 50-server.cnf /etc/mysql/mariadb.conf.d
 VOLUME ["/var/lib/mysql"]
-EXPOSE 3306
 ENTRYPOINT [ "sh", "start.sh" ]
+EXPOSE 3306
