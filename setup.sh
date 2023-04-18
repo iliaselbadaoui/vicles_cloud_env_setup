@@ -8,8 +8,8 @@ else
     kubectl delete pods --all
     kubectl delete deployments --all
     kubectl delete svc --all
-    kubectl delete pvc --all
-    kubectl delete pv --all
+    # kubectl delete pvc --all
+    # kubectl delete pv --all
     # minikube cache delete
 fi
 
