@@ -6,4 +6,3 @@ kubectl delete svc --all
 # kubectl delete pv --all
 # minikube stop
 # minikube delete
-# minikube cache delete
