@@ -1,0 +1,6 @@
+:3000
+{
+	root * /www
+	php_fastcgi unix//run/php/php8.0-fpm.sock
+	file_server
+}

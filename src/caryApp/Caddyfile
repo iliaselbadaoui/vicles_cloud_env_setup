@@ -1,5 +1,5 @@
 :3000
 {
-	root * /www
+	root * /www/dist
 	file_server
 }

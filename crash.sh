@@ -1,6 +1,8 @@
-sed -i '' "s/$(minikube ip)/IPS/g" k8s/metalLB.yml
+sed -i '' "s/$(minikube ip)/IPS/g" k8s_dev/metalLB.yml
 kubectl delete pods --all
 kubectl delete deployments --all
 kubectl delete svc --all
 # kubectl delete pvc --all
-minikube stop
+# kubectl delete pv --all
+# minikube stop
+# minikube delete
